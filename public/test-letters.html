@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>4SIGHT Letters Align Test</title>
+  <style>
+    body {
+      background: #0a0a0c;
+      color: #e2e8f0;
+      font-family: monospace;
+      padding: 48px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+    .word-container {
+      display: flex;
+      align-items: center; /* Align items centered vertically */
+      gap: 12px;
+      background: #020617;
+      padding: 40px;
+      border: 1px solid #1e293b;
+    }
+    .letter-box {
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px; /* Fixed height for all letters */
+      transition: all 0.3s;
+    }
+    .letter-box:hover {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.05);
+    }
+    img {
+      height: 100%; /* Scale to fit height */
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.1));
+    }
+    .controls {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+    }
+    .align-btn {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .align-btn.active {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <h1>4SIGHT Letters Alignment Test</h1>
+  <p>Testing separated SVGs rendered side-by-side with fixed height (height: 120px, width: auto).</p>
+  
+  <div class="word-container" id="word">
+    <div class="letter-box"><img src="/assets/letters/letter-4.svg" alt="4" /></div>
+    <div class="letter-box"><img src="/assets/letters/letter-s.svg" alt="S" /></div>
+    <div class="letter-box"><img src="/assets/letters/letter-i.svg" alt="I" /></div>
+    <div class="letter-box"><img src="/assets/letters/letter-g.svg" alt="G" /></div>
+    <div class="letter-box"><img src="/assets/letters/letter-h.svg" alt="H" /></div>
+    <div class="letter-box"><img src="/assets/letters/letter-t.svg" alt="T" /></div>
+  </div>
+
+  <div class="controls">
+    <button class="align-btn active" onclick="setAlign('center')">Align Center</button>
+    <button class="align-btn" onclick="setAlign('flex-end')">Align Bottom</button>
+    <button class="align-btn" onclick="setAlign('flex-start')">Align Top</button>
+    <button class="align-btn" onclick="setAlign('stretch')">Align Stretch</button>
+  </div>
+
+  <script>
+    function setAlign(align) {
+      document.getElementById('word').style.alignItems = align;
+      document.querySelectorAll('.align-btn').forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(align.replace('flex-', ''))) {
+          btn.classList.add('active');
+        } else if (align === 'center' && btn.innerText.toLowerCase().includes('center')) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
