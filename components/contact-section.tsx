@@ -61,7 +61,7 @@ export function ContactSection() {
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         })
       }
@@ -75,7 +75,7 @@ export function ContactSection() {
           scrollTrigger: {
             trigger: contentRef.current,
             start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         })
       }
@@ -89,7 +89,7 @@ export function ContactSection() {
           scrollTrigger: {
             trigger: footerRef.current,
             start: "top 95%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         })
       }
@@ -153,7 +153,7 @@ export function ContactSection() {
                     disabled={status === "loading"}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-background/40 border border-border/40 px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/40 focus:outline-none transition-all duration-200"
+                    className="w-full bg-card/40 border border-border px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/25 focus:outline-none transition-all duration-200"
                     placeholder="E.g., Marcus Aurelius"
                   />
                 </div>
@@ -166,7 +166,7 @@ export function ContactSection() {
                     disabled={status === "loading"}
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    className="w-full bg-background/40 border border-border/40 px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/40 focus:outline-none transition-all duration-200"
+                    className="w-full bg-card/40 border border-border px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/25 focus:outline-none transition-all duration-200"
                     placeholder="E.g., Roma Ventures"
                   />
                 </div>
@@ -182,7 +182,7 @@ export function ContactSection() {
                   disabled={status === "loading"}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-background/40 border border-border/40 px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/40 focus:outline-none transition-all duration-200"
+                  className="w-full bg-card/40 border border-border px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/25 focus:outline-none transition-all duration-200"
                   placeholder="E.g., name@domain.com"
                 />
               </div>
@@ -195,8 +195,8 @@ export function ContactSection() {
                   disabled={status === "loading"}
                   value={formData.projectType}
                   onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                  className="w-full bg-background/40 border border-border/40 px-4 py-3 font-mono text-xs text-foreground focus:border-accent focus:ring-1 focus:ring-accent/40 focus:outline-none transition-all duration-200 appearance-none cursor-pointer"
-                  style={{ backgroundImage: "url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2306b6d4%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E')", backgroundPosition: "right 1rem center", backgroundSize: "1em", backgroundRepeat: "no-repeat" }}
+                  className="w-full bg-card/40 border border-border px-4 py-3 font-mono text-xs text-foreground focus:border-accent focus:ring-1 focus:ring-accent/25 focus:outline-none transition-all duration-200 appearance-none cursor-pointer"
+                  style={{ backgroundImage: "url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2300D9FF%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E')", backgroundPosition: "right 1rem center", backgroundSize: "1em", backgroundRepeat: "no-repeat" }}
                 >
                   <option value="" className="bg-background text-muted-foreground">Select Category</option>
                   <option value="website" className="bg-background">Custom Web Interface</option>
@@ -217,7 +217,7 @@ export function ContactSection() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={4}
-                  className="w-full bg-background/40 border border-border/40 px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/40 focus:outline-none transition-all duration-200 resize-none"
+                  className="w-full bg-card/40 border border-border px-4 py-3 font-mono text-xs text-foreground placeholder:text-muted-foreground/30 focus:border-accent focus:ring-1 focus:ring-accent/25 focus:outline-none transition-all duration-200 resize-none"
                   placeholder="Outline the operational bottleneck or design scope..."
                 />
               </div>
@@ -225,12 +225,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className={cn(
-                  "group inline-flex items-center gap-3 border px-6 py-3 font-mono text-xs uppercase tracking-widest transition-all duration-200",
-                  status === "loading"
-                    ? "border-accent/30 text-accent/50 cursor-not-allowed"
-                    : "border-foreground/20 text-foreground hover:border-accent hover:text-accent cursor-pointer"
-                )}
+                className="group btn-primary cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <ScrambleTextOnHover 
                   text={status === "loading" ? "Triaging Parameters..." : "Book Diagnostic Call"} 

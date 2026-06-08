@@ -63,9 +63,10 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  className="relative py-2 font-mono text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-300 group"
                 >
                   {link.label}
+                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
                 </a>
               ))}
             </div>
@@ -75,7 +76,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => handleLinkClick(e, "#contact")}
-                className="inline-flex items-center justify-center px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-background bg-foreground hover:bg-foreground/90 transition-colors duration-200"
+                className="btn-primary !py-2 !px-4 !text-[10px]"
               >
                 Get Started
               </a>
@@ -118,7 +119,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => handleLinkClick(e, "#contact")}
-                className="block w-full text-center py-3 font-mono text-xs uppercase tracking-widest text-background bg-foreground hover:bg-foreground/90 transition-colors duration-200"
+                className="block w-full text-center btn-primary"
               >
                 Get Started
               </a>

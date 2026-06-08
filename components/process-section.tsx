@@ -67,7 +67,7 @@ export function ProcessSection() {
         scrollTrigger: {
           trigger: headerRef.current,
           start: "top 85%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none reverse",
         },
       })
 
@@ -82,7 +82,7 @@ export function ProcessSection() {
           scrollTrigger: {
             trigger: article,
             start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         })
       })

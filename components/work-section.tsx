@@ -90,7 +90,7 @@ export function WorkSection() {
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 90%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         },
       )
@@ -107,7 +107,7 @@ export function WorkSection() {
           scrollTrigger: {
             trigger: gridRef.current,
             start: "top 90%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         })
       }
@@ -191,9 +191,9 @@ function WorkCard({
     <article
       ref={cardRef}
       className={cn(
-        "group relative border border-border/40 p-5 flex flex-col justify-between transition-all duration-500 cursor-pointer overflow-hidden",
+        "group relative border border-border/50 p-5 flex flex-col justify-between transition-all duration-500 cursor-pointer overflow-hidden bg-card/30 backdrop-blur-xs",
         study.span,
-        isActive && "border-accent/60",
+        isActive && "border-accent/40",
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -201,7 +201,7 @@ function WorkCard({
       {/* Background layer */}
       <div
         className={cn(
-          "absolute inset-0 bg-accent/5 transition-opacity duration-500",
+          "absolute inset-0 bg-accent/[0.02] transition-opacity duration-500",
           isActive ? "opacity-100" : "opacity-0",
         )}
       />
@@ -248,12 +248,12 @@ function WorkCard({
       {/* Corner line */}
       <div
         className={cn(
-          "absolute top-0 right-0 w-12 h-12 transition-all duration-500",
+          "absolute top-0 right-0 w-8 h-8 transition-all duration-500",
           isActive ? "opacity-100" : "opacity-0",
         )}
       >
-        <div className="absolute top-0 right-0 w-full h-[1px] bg-accent" />
-        <div className="absolute top-0 right-0 w-[1px] h-full bg-accent" />
+        <div className="absolute top-0 right-0 w-full h-[1px] bg-accent/40" />
+        <div className="absolute top-0 right-0 w-[1px] h-full bg-accent/40" />
       </div>
     </article>
   )

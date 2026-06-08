@@ -71,26 +71,30 @@ export function HeroSection() {
           We engineer systems that eliminate operational bottlenecks and accelerate growth. From websites and SaaS platforms to AI automation and business systems.
         </p>
 
-        <div className="mt-16 flex items-center gap-8">
+        <div className="mt-12 flex flex-wrap items-center gap-6">
           <a
             href="#solutions"
-            className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
+            className="group btn-primary"
           >
             <ScrambleTextOnHover text="Book Strategy Call" as="span" duration={0.6} />
             <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
           </a>
           <a
             href="#work"
-            className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
+            className="btn-secondary"
           >
             View Our Work
           </a>
         </div>
       </div>
 
-      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10">
-        <div className="border border-border px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground whitespace-nowrap">
-          Build / Automate / Scale
+      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10 flex flex-col items-end gap-2">
+        <div className="border border-border/40 bg-background/40 backdrop-blur-md px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground flex items-center gap-2 select-none">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+          <span>SYSTEM STATUS: OPERATIONAL</span>
+        </div>
+        <div className="font-mono text-[8px] text-muted-foreground/40 uppercase tracking-widest">
+          LATENCY: 12MS // COMPUTE: 100%
         </div>
       </div>
     </section>

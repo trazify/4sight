@@ -249,8 +249,8 @@ function SplitFlapLogoChar({ char, index, animationKey, skipEntrance, speed, pla
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const tileDelay = 0.15 * index
-  const bgColor = isSettled ? "rgba(6, 182, 212, 0)" : "rgba(6, 182, 212, 0.15)"
-  const borderColor = isSettled ? "rgba(6, 182, 212, 0)" : "rgba(6, 182, 212, 0.3)"
+  const bgColor = isSettled ? "rgba(13, 13, 13, 0.5)" : "rgba(0, 217, 255, 0.05)"
+  const borderColor = isSettled ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 217, 255, 0.3)"
 
   const controls = useAnimation()
 
@@ -315,7 +315,7 @@ function SplitFlapLogoChar({ char, index, animationKey, skipEntrance, speed, pla
     }
     
     return (
-      <span className="font-mono text-cyan-500 font-bold leading-none select-none text-[0.8em]">
+      <span className="font-mono text-accent font-bold leading-none select-none text-[0.8em]">
         {contentChar}
       </span>
     )
@@ -338,7 +338,7 @@ function SplitFlapLogoChar({ char, index, animationKey, skipEntrance, speed, pla
         opacity: { duration: 0.3 },
         y: { duration: 0.3 }
       }}
-      className="absolute overflow-hidden flex items-center justify-center border"
+      className="absolute overflow-hidden flex items-center justify-center border backdrop-blur-md"
       style={{
         left: TILE_POSITIONS[index].left_settled,
         width: TILE_POSITIONS[index].width,

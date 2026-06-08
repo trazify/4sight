@@ -22,6 +22,8 @@ function Sphere() {
     uniform float uTime;
     varying vec2 vUv;
     varying float vDisplacement;
+    varying vec3 vNormal;
+    varying vec3 vEyeVector;
     
     vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
     vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -76,28 +78,45 @@ function Sphere() {
     
     void main() {
       vUv = uv;
+      vNormal = normalize(normalMatrix * normal);
       
-      float noise = snoise(position * 1.5 + uTime * 0.15);
-      float displacement = noise * 0.15;
+      float noise = snoise(position * 1.2 + uTime * 0.18);
+      float detailNoise = snoise(position * 3.0 - uTime * 0.3) * 0.35;
+      float displacement = (noise + detailNoise) * 0.12;
       vDisplacement = displacement;
       
       vec3 newPosition = position + normal * displacement;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+      vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
+      vEyeVector = normalize(-mvPosition.xyz);
+      
+      gl_Position = projectionMatrix * mvPosition;
     }
   `
 
   const fragmentShader = `
     varying vec2 vUv;
     varying float vDisplacement;
+    varying vec3 vNormal;
+    varying vec3 vEyeVector;
+    uniform float uTime;
     
     void main() {
-      float intensity = 0.3 + vDisplacement * 2.0;
-      vec3 color = vec3(intensity);
+      float fresnel = pow(1.0 - max(dot(vNormal, vEyeVector), 0.0), 3.0);
       
-      float line = smoothstep(0.0, 0.02, abs(fract(vUv.x * 20.0) - 0.5));
-      line *= smoothstep(0.0, 0.02, abs(fract(vUv.y * 20.0) - 0.5));
+      vec3 baseColor = vec3(0.0, 0.85, 1.0);
+      vec3 glowColor = vec3(0.2, 0.9, 1.0);
       
-      gl_FragColor = vec4(color * (1.0 - line * 0.5), 0.6);
+      float pulse = sin(uTime * 1.5) * 0.08 + 0.92;
+      vec3 color = mix(baseColor, glowColor, vDisplacement * 2.0 + 0.5) * pulse;
+      
+      float lineX = smoothstep(0.0, 0.015, abs(fract(vUv.x * 24.0) - 0.5));
+      float lineY = smoothstep(0.0, 0.015, abs(fract(vUv.y * 24.0) - 0.5));
+      float grid = 1.0 - (lineX * lineY);
+      
+      vec3 finalColor = mix(color, glowColor, fresnel * 0.8);
+      float alpha = mix(0.12, 0.8, fresnel) + grid * 0.12;
+      
+      gl_FragColor = vec4(finalColor, alpha);
     }
   `
 

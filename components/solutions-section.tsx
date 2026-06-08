@@ -61,7 +61,7 @@ export function SolutionsSection() {
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 85%",
-            toggleActions: "play reverse play reverse",
+            toggleActions: "play none none reverse",
           },
         },
       )
@@ -80,7 +80,7 @@ export function SolutionsSection() {
             scrollTrigger: {
               trigger: categoriesRef.current,
               start: "top 90%",
-              toggleActions: "play reverse play reverse",
+              toggleActions: "play none none reverse",
             },
           },
         )
@@ -173,21 +173,21 @@ function SolutionCard({ service, index }: { service: { title: string; descriptio
       ref={cardRef}
       onMouseMove={handleMouseMove}
       className={cn(
-        "group relative border border-border/40 p-6 transition-all duration-500 overflow-hidden bg-background/30 backdrop-blur-xs",
-        "hover:border-accent/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.04)]"
+        "group relative border border-border/50 p-6 transition-all duration-500 overflow-hidden bg-card/40 backdrop-blur-md",
+        "hover:border-accent/40 hover:shadow-[0_0_30px_rgba(0,217,255,0.02)]"
       )}
     >
       {/* Dynamic spot lighting radial gradient overlay */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0"
         style={{
-          background: "radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(6, 182, 212, 0.07), transparent 80%)"
+          background: "radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 217, 255, 0.05), transparent 80%)"
         }}
       />
 
       <div className="relative z-10 flex flex-col justify-between h-full min-h-[120px]">
         <div>
-          <h4 className="font-[var(--font-bebas)] text-xl tracking-tight group-hover:text-accent transition-colors duration-300">
+          <h4 className="font-[var(--font-bebas)] text-xl tracking-wide group-hover:text-accent transition-colors duration-300">
             {service.title}
           </h4>
           <p className="mt-2 font-mono text-xs text-muted-foreground leading-relaxed group-hover:text-muted-foreground/90 transition-colors duration-300">
@@ -201,7 +201,7 @@ function SolutionCard({ service, index }: { service: { title: string; descriptio
       </div>
 
       {/* Subtle corner tech tick */}
-      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-border/60 group-hover:border-accent/60 transition-colors duration-300" />
+      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-border/40 group-hover:border-accent/40 transition-colors duration-300" />
     </article>
   )
 }

@@ -61,12 +61,12 @@ export function SideNav() {
     <nav className="fixed left-0 top-0 z-50 h-screen w-16 md:w-20 hidden md:flex flex-col justify-center border-r border-border/30 bg-background/80 backdrop-blur-sm">
       {/* Dynamic Right Border Scroll Progress Indicator */}
       <div
-        className="absolute right-[-1px] top-0 w-[2px] bg-accent transition-all duration-100 ease-out z-10 shadow-[0_0_8px_var(--accent)]"
+        className="absolute right-[-1px] top-0 w-[2px] bg-accent transition-all duration-100 ease-out z-10 shadow-[0_0_8px_rgba(0,217,255,0.5)]"
         style={{ height: `${scrollProgress}%` }}
       />
 
       {/* Decorative vertical guide line behind the dots */}
-      <div className="absolute left-[31px] md:left-[39px] top-[15%] bottom-[15%] w-[1px] bg-border/20 pointer-events-none z-0" />
+      <div className="absolute left-[31px] md:left-[39px] top-[15%] bottom-[15%] w-[1px] bg-border/25 pointer-events-none z-0" />
 
       <div className="flex flex-col gap-8 px-4 relative z-10">
         {navItems.map(({ id, label }) => {
@@ -81,8 +81,8 @@ export function SideNav() {
               <span
                 className={cn(
                   "absolute inset-0 rounded-full border border-accent/0 transition-all duration-500 scale-75 opacity-0",
-                  isActive && "border-accent/40 scale-110 opacity-100 animate-pulse",
-                  "group-hover:border-accent/30 group-hover:scale-100 group-hover:opacity-100"
+                  isActive && "border-accent/30 scale-110 opacity-100",
+                  "group-hover:border-accent/20 group-hover:scale-100 group-hover:opacity-100"
                 )}
               />
 
@@ -91,7 +91,7 @@ export function SideNav() {
                 className={cn(
                   "h-1.5 w-1.5 rounded-full transition-all duration-300 z-10",
                   isActive
-                    ? "bg-accent scale-150 shadow-[0_0_8px_var(--accent)]"
+                    ? "bg-accent scale-150 shadow-[0_0_8px_rgba(0,217,255,0.6)]"
                     : "bg-muted-foreground/30 group-hover:bg-foreground/60 group-hover:scale-110"
                 )}
               />
